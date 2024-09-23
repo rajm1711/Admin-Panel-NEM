@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="/views/public/css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="bg-gradient bg-opacity-25 bg-danger">
+      <div class="header d-flex justify-content-between p-3">
+        <div class="logo">
+          <a href="/" class="fw-bolder fs-3 text-light">LOGOS</a>
+        </div>
+
+        <div class="right-side">
+          <% if (user) { %>
+            <a href="/logout" class="btn btn-danger">Logout</a>
+          <% } else { %>
+            <a href="/login" class="btn btn-success">Login</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">
+                <i class="bi bi-house-door-fill"></i>
+                Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/profile">
+                <i class="bi bi-people-fill"></i>
+                Users
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/settings">
+                <i class="bi bi-gear-fill"></i>
+                Settings
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/reports">
+                <i class="bi bi-bar-chart-fill"></i>
+                Reports
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5">
+        <h1>Welcome, <%= user ? user : 'Guest' %> to the Admin Panel</h1>
+        <% if (user) { %>
+          <p class="text-muted">Manage your dashboard, settings, and content.</p>
+        <% } else { %>
+          <p>Please <a href="/login">log in</a> to access admin features.</p>
+        <% } %>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
